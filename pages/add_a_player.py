@@ -3,7 +3,6 @@ from pages.base_page import BasePage
 
 
 class AddAPlayer(BasePage):
-    add_player_button_xpath = "//div[2]/div/div/a"
     login_url = ('https://scouts-test.futbolkolektyw.pl/en')
     expected_title = "Scouts panel"
 
