@@ -25,14 +25,24 @@ class TestAddAPlayer(unittest.TestCase):
         self.driver.fullscreen_window()
         self.driver.implicitly_wait(IMPLICITLY_WAIT)
 
-    def test_log_in_to_the_system(self):
+    def test_add_a_player(self):
         user_login = LoginPage(self.driver)
+        user_login.title_of_page()
         user_login.type_in_email('user01@getnada.com')
         user_login.type_in_password('Test-1234')
+        user_login.wait_for_button_will_be_clicable()
         user_login.click_on_the_sign_in_button()
         dashboard_page = Dashboard(self.driver)
+        dashboard_page.title_of_page()
         dashboard_page.click_on_the_add_player_button()
         add_a_player_page = AddAPlayer(self.driver)
         add_a_player_page.title_of_page()
-        time.sleep(5)
+        add_a_player_page.type_in_name('Bora')
+        add_a_player_page.type_in_surname('Lava')
+        add_a_player_page.type_in_age('05.02.2022')
+        add_a_player_page.type_in_main_position('11th')
+        add_a_player_page.wait_for_button_will_be_clicable()
+        add_a_player_page.click_on_the_submit_button()
+        add_a_player_page.wait_for_visibility_of_popup()
+
         BasePage.tearDown(self)
