@@ -50,3 +50,6 @@ class AddAMatchForm(BasePage):
 
     def click_on_the_submit_button(self):
         self.click_on_the_element(self.submit_button_xpath)
+
+    def wait_for_button_will_be_clicable(self):
+        self.wait_for_element_to_be_clicable(self.submit_button_xpath)

@@ -9,6 +9,7 @@ from selenium.webdriver.support import expected_conditions as EC
 
 from utils.settings import DEFAULT_LOCATOR_TYPE, EXPLICITLY_WAIT
 
+from PIL import Image
 
 class BasePage():
     def __init__(self, driver: WebDriver):
@@ -40,3 +41,8 @@ class BasePage():
         wait = WebDriverWait(self.driver, 10)
         element = wait.until(EC.visibility_of_element_located((locator_type, locator)))
         time.sleep(3)
+
+    def take_a_screenshot(self, name):
+        self.driver.save_screenshot(name)
+        screenshot = Image.open(name)
+        screenshot.show()

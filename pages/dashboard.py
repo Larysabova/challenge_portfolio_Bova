@@ -26,6 +26,9 @@ class Dashboard(BasePage):
         self.wait_for_element_to_be_clicable(self.add_player_button_xpath)
         assert self.get_page_title(self.dashboard_url) == self.expected_title
 
+    def wait_for_button_will_be_clicable(self):
+        self.wait_for_element_to_be_clicable(self.sign_out_button_xpath)
+
     def click_on_the_add_player_button(self):
         self.click_on_the_element(self.add_player_button_xpath)
 
@@ -35,7 +38,7 @@ class Dashboard(BasePage):
     def click_on_the_language_button(self):
         self.click_on_the_element(self.language_button_xpath)
 
-    def in_polish(self):
+    def wait_for_visibility_of_button_in_polish(self):
         self.wait_for_visibility_of_element_located(self.main_page_button_in_Polish_xpath)
 
     def click_on_the_players_button(self):

@@ -19,3 +19,6 @@ class Matches(BasePage):
 
     def wait_for_visibility_of_popup(self):
         self.wait_for_visibility_of_element_located(self.added_match_popup)
+
+    def wait_for_button_will_be_clicable(self):
+        self.wait_for_element_to_be_clicable(self.add_match_button)

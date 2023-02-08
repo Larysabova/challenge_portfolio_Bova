@@ -10,7 +10,6 @@ from pages.base_page import BasePage
 from pages.dashboard import Dashboard
 from pages.edit_the_player_page import EditThePlayer
 from pages.login_page import LoginPage
-from pages.add_a_player import AddAPlayer
 from pages.add_match_form import AddAMatchForm
 from pages.matches_page import Matches
 from pages.players_page import Players
@@ -31,13 +30,12 @@ class TestAddAMatch(unittest.TestCase):
 
     def test_add_a_match(self):
         user_login = LoginPage(self.driver)
-        user_login.title_of_page()
         user_login.type_in_email('user01@getnada.com')
         user_login.type_in_password('Test-1234')
         user_login.wait_for_button_will_be_clicable()
         user_login.click_on_the_sign_in_button()
         dashboard_page = Dashboard(self.driver)
-        dashboard_page.title_of_page()
+        dashboard_page.wait_for_button_will_be_clicable()
         dashboard_page.click_on_the_players_button()
         players_page = Players(self.driver)
         players_page.click_on_the_filter_button()
@@ -47,19 +45,21 @@ class TestAddAMatch(unittest.TestCase):
         players_page.click_on_the_close_filter_button()
         players_page.click_on_the_filtering_result()
         edit_the_player_page = EditThePlayer(self.driver)
-        edit_the_player_page.title_of_page()
+        edit_the_player_page.wait_for_button_will_be_clicable()
         edit_the_player_page.click_on_the_matches_button()
         matches_page = Matches(self.driver)
-        matches_page.title_of_page()
+        matches_page.wait_for_button_will_be_clicable()
         matches_page.click_on_the_add_match_button()
         add_a_match_form = AddAMatchForm(self.driver)
-        add_a_match_form.title_of_page()
         add_a_match_form.type_in_my_team('Larifa')
         add_a_match_form.type_in_enemy_team('Timfa')
         add_a_match_form.type_in_my_team_score('3')
         add_a_match_form.type_in_enemy_team_score('2')
         add_a_match_form.type_in_date('05.02.2023')
+        add_a_match_form.wait_for_button_will_be_clicable()
         add_a_match_form.click_on_the_submit_button()
         matches_page.wait_for_visibility_of_popup()
+
+        BasePage.take_a_screenshot(self, 'TC005.png')
 
         BasePage.tearDown(self)

@@ -15,7 +15,7 @@ from pages.players_page import Players
 from utils.settings import DRIVER_PATH, IMPLICITLY_WAIT
 
 
-class TestAddAPlayer(unittest.TestCase):
+class TestEditThePlayer(unittest.TestCase):
 
     @classmethod
     def setUp(self):
@@ -29,13 +29,12 @@ class TestAddAPlayer(unittest.TestCase):
 
     def test_edit_the_player(self):
         user_login = LoginPage(self.driver)
-        user_login.title_of_page()
         user_login.type_in_email('user01@getnada.com')
         user_login.type_in_password('Test-1234')
         user_login.wait_for_button_will_be_clicable()
         user_login.click_on_the_sign_in_button()
         dashboard_page = Dashboard(self.driver)
-        dashboard_page.title_of_page()
+        dashboard_page.wait_for_button_will_be_clicable()
         dashboard_page.click_on_the_players_button()
         players_page = Players(self.driver)
         players_page.click_on_the_filter_button()
@@ -45,10 +44,11 @@ class TestAddAPlayer(unittest.TestCase):
         players_page.click_on_the_close_filter_button()
         players_page.click_on_the_filtering_result()
         edit_the_player_page = EditThePlayer(self.driver)
-        edit_the_player_page.title_of_page()
         edit_the_player_page.type_in_level('Professional')
         edit_the_player_page.wait_for_button_will_be_clicable()
         edit_the_player_page.click_on_the_submit_button()
         edit_the_player_page.wait_for_visibility_of_element()
+
+        BasePage.take_a_screenshot(self, 'TC004.png')
 
         BasePage.tearDown(self)

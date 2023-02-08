@@ -13,7 +13,7 @@ from pages.login_page import LoginPage
 from utils.settings import DRIVER_PATH, IMPLICITLY_WAIT
 
 
-class TestLoginPage(unittest.TestCase):
+class TestLogoutPage(unittest.TestCase):
 
     @classmethod
     def setUp(self):
@@ -27,14 +27,15 @@ class TestLoginPage(unittest.TestCase):
 
     def test_log_out_of_the_system(self):
         user_login = LoginPage(self.driver)
-        user_login.title_of_page()
         user_login.type_in_email('user01@getnada.com')
         user_login.type_in_password('Test-1234')
         user_login.wait_for_button_will_be_clicable()
         user_login.click_on_the_sign_in_button()
         dashboard_page = Dashboard(self.driver)
-        dashboard_page.title_of_page()
+        dashboard_page.wait_for_button_will_be_clicable()
         dashboard_page.click_on_the_sign_out_button()
-        user_login.title_of_page()
+        user_login.wait_for_button_will_be_clicable()
+
+        BasePage.take_a_screenshot(self, 'TC001.png')
 
         BasePage.tearDown(self)

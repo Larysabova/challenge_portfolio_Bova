@@ -27,16 +27,14 @@ class TestAddAPlayer(unittest.TestCase):
 
     def test_add_a_player(self):
         user_login = LoginPage(self.driver)
-        user_login.title_of_page()
         user_login.type_in_email('user01@getnada.com')
         user_login.type_in_password('Test-1234')
         user_login.wait_for_button_will_be_clicable()
         user_login.click_on_the_sign_in_button()
         dashboard_page = Dashboard(self.driver)
-        dashboard_page.title_of_page()
+        dashboard_page.wait_for_button_will_be_clicable()
         dashboard_page.click_on_the_add_player_button()
         add_a_player_page = AddAPlayer(self.driver)
-        add_a_player_page.title_of_page()
         add_a_player_page.type_in_name('Bora')
         add_a_player_page.type_in_surname('Lava')
         add_a_player_page.type_in_age('05.02.2022')
@@ -44,5 +42,7 @@ class TestAddAPlayer(unittest.TestCase):
         add_a_player_page.wait_for_button_will_be_clicable()
         add_a_player_page.click_on_the_submit_button()
         add_a_player_page.wait_for_visibility_of_popup()
+
+        BasePage.take_a_screenshot(self, 'TC003.png')
 
         BasePage.tearDown(self)

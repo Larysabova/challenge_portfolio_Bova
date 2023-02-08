@@ -12,6 +12,8 @@ from pages.dashboard import Dashboard
 from pages.login_page import LoginPage
 from utils.settings import DRIVER_PATH, IMPLICITLY_WAIT
 
+from PIL import Image
+
 
 class TestLoginPage(unittest.TestCase):
 
