@@ -22,12 +22,12 @@ class LoginPage(BasePage):
         self.click_on_the_element(self.sign_in_button_xpath)
 
     def title_of_page(self):
-        self.wait_for_element_to_be_clicable(self.sign_in_button_xpath)
+        self.wait_for_element_to_be_clickable(self.sign_in_button_xpath)
         assert self.get_page_title(self.login_url) == self.expected_title
 
     def element_text(self):
         expected_text = self.header_of_box
         self.assert_element_text(self.title_of_box_xpath, expected_text)
 
-    def wait_for_button_will_be_clicable(self):
-        self.wait_for_element_to_be_clicable(self.sign_in_button_xpath)
+    def wait_for_button_will_be_clickable(self):
+        self.wait_for_element_to_be_clickable(self.sign_in_button_xpath)
