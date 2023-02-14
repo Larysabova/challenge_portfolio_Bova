@@ -33,7 +33,7 @@ class TestLoginPage(unittest.TestCase):
         user_login.element_text()
         user_login.type_in_email('user01@getnada.com')
         user_login.type_in_password('Test-1234')
-        user_login.wait_for_button_will_be_clicable()
+        user_login.wait_for_button_will_be_clickable()
         user_login.click_on_the_sign_in_button()
         dashboard_page = Dashboard(self.driver)
         dashboard_page.title_of_page()
