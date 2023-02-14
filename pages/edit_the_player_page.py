@@ -10,7 +10,7 @@ class EditThePlayer(BasePage):
     matches_button_xpath = "//*[text()='Matches']"
 
     def title_of_page(self):
-        self.wait_for_element_to_be_clicable(self.submit_button_xpath)
+        self.wait_for_element_to_be_clickable(self.submit_button_xpath)
         assert self.get_page_title(self.edit_players_url) == self.expected_title
 
     def click_on_the_submit_button(self):
@@ -22,8 +22,8 @@ class EditThePlayer(BasePage):
     def type_in_level(self, level):
         self.field_send_keys(self.level_filter_field_xpath, level)
 
-    def wait_for_button_will_be_clicable(self):
-        self.wait_for_element_to_be_clicable(self.submit_button_xpath)
+    def wait_for_button_will_be_clickable(self):
+        self.wait_for_element_to_be_clickable(self.submit_button_xpath)
 
     def wait_for_visibility_of_element(self):
         self.wait_for_visibility_of_element_located(self.saved_player_popup)
