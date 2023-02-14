@@ -32,13 +32,13 @@ class AddAPlayer(BasePage):
     clear_button_xpath = "//button[contains(@class, 'containedSecondary')]"
     add_player_url = ('https://scouts-test.futbolkolektyw.pl/en/players/add')
     expected_title = "Add player"
-    added_player_popup = "//*[text() = 'Added player.']"
+    added_player_popup_xpath = "//*[text() = 'Added player.']"
 
     def title_of_page(self):
         assert self.get_page_title(self.add_player_url) == self.expected_title
 
-    def wait_for_button_will_be_clicable(self):
-        self.wait_for_element_to_be_clicable(self.submit_button_xpath)
+    def wait_for_button_will_be_clickable(self):
+        self.wait_for_element_to_be_clickable(self.submit_button_xpath)
 
     def type_in_name(self, name):
         self.field_send_keys(self.name_field_xpath, name)
@@ -56,4 +56,4 @@ class AddAPlayer(BasePage):
         self.click_on_the_element(self.submit_button_xpath)
 
     def wait_for_visibility_of_popup(self):
-        self.wait_for_visibility_of_element_located(self.added_player_popup)
+        self.wait_for_visibility_of_element_located(self.added_player_popup_xpath)
