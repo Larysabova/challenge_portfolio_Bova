@@ -3,6 +3,7 @@ import unittest
 from urllib.parse import urlparse
 
 from selenium.webdriver.common.by import By
+from selenium.webdriver.remote.command import Command
 from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -10,6 +11,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from utils.settings import DEFAULT_LOCATOR_TYPE, EXPLICITLY_WAIT
 
 from PIL import Image
+
 
 class BasePage():
     def __init__(self, driver: WebDriver):
@@ -23,6 +25,9 @@ class BasePage():
 
     def get_page_title(self, url):
         return self.driver.title
+
+    def get_element_value(self, selector, selector_type=By.XPATH):
+        return self.driver.find_element(selector_type, selector).get_attribute("value")
 
     def tearDown(self):
         self.driver.quit()
@@ -46,3 +51,4 @@ class BasePage():
         self.driver.save_screenshot(name)
         screenshot = Image.open(name)
         screenshot.show()
+        time.sleep(3)

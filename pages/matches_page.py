@@ -6,7 +6,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 class Matches(BasePage):
     add_match_button_xpath = "//main/a/button/span[1]"
-    matches_url = ('https://scouts-test.futbolkolektyw.pl/en')
+    matches_url = ('https://scouts.futbolkolektyw.pl/en/')
     expected_title = "Matches player Bora Lava"
     added_match_popup_xpath = "//*[text() = 'Added match.']"
 

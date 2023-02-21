@@ -8,6 +8,7 @@ from selenium import webdriver
 
 from pages.base_page import BasePage
 from pages.dashboard import Dashboard
+from pages.edit_the_player_page import EditThePlayer
 from pages.login_page import LoginPage
 from pages.add_a_player import AddAPlayer
 from utils.settings import DRIVER_PATH, IMPLICITLY_WAIT
@@ -21,7 +22,7 @@ class TestAddAPlayer(unittest.TestCase):
         self.driver_service = Service(executable_path=DRIVER_PATH)
         # self.driver_service = Service(executable_path=ChromeDriverManager().install())
         self.driver = webdriver.Chrome(service=self.driver_service)
-        self.driver.get('https://scouts-test.futbolkolektyw.pl/en')
+        self.driver.get('https://scouts.futbolkolektyw.pl/en/')
         self.driver.fullscreen_window()
         self.driver.implicitly_wait(IMPLICITLY_WAIT)
 
@@ -42,7 +43,9 @@ class TestAddAPlayer(unittest.TestCase):
         add_a_player_page.wait_for_button_will_be_clickable()
         add_a_player_page.click_on_the_submit_button()
         add_a_player_page.wait_for_visibility_of_popup()
+        edit_the_player_page = EditThePlayer(self.driver)
+        edit_the_player_page.title_of_page()
 
-        BasePage.take_a_screenshot(self, 'TC003.png')
+        BasePage.take_a_screenshot(self, 'TC004.png')
 
         BasePage.tearDown(self)

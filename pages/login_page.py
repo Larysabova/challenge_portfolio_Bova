@@ -2,14 +2,15 @@ from pages.base_page import BasePage
 
 
 class LoginPage(BasePage):
+
     login_field_xpath = "//*[@id='login']"
     password_field_xpath = "//*[@id='password']"
     remind_password_hyperlink_xpath = "//*[text()='Remind password']"
     select_language_button = "//*[@role='button']"
     sign_in_button_xpath = "//*[text()='Sign in']"
-    login_url = ('https://scouts-test.futbolkolektyw.pl/en')
+    login_url = ('https://scouts.futbolkolektyw.pl/en')
     expected_title = "Scouts panel - sign in"
-    title_of_box_xpath = "//h5[text()='Scouts Panel']"
+    title_of_box_xpath = "//*[1][name()='h5']"
     header_of_box = 'Scouts Panel'
 
     def type_in_email(self, email):
@@ -26,8 +27,7 @@ class LoginPage(BasePage):
         assert self.get_page_title(self.login_url) == self.expected_title
 
     def element_text(self):
-        expected_text = self.header_of_box
-        self.assert_element_text(self.title_of_box_xpath, expected_text)
+        self.assert_element_text(self.title_of_box_xpath)
 
     def wait_for_button_will_be_clickable(self):
         self.wait_for_element_to_be_clickable(self.sign_in_button_xpath)

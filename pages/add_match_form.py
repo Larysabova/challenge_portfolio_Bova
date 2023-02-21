@@ -2,11 +2,12 @@ from pages.base_page import BasePage
 
 
 class AddAMatchForm(BasePage):
+    title_of_box_xpath = "//form/div[1]/div/span"
     menu_button_xpath = "//button[@aria-label='menu']"
     main_page_button_xpath = "//*[text()='Main page']"
     players_button_xpath = "//*[text()='Players']"
     current_player_hyperlink_xpath = "//ul[2]/div[1]/div[2]/span"
-    language_button_xpath = "//*[text()='English' or text()='Polski']"
+    language_button_xpath = "//ul[2]/div[1]"
     sign_out_button_xpath = "//*[text()='Sign out']"
     matches_button_xpath = "//*[text()='Matches']"
     reports_button_xpath = "//*[text()='Reports']"
@@ -26,7 +27,7 @@ class AddAMatchForm(BasePage):
     rating_field_xpath = "//*[@name='rating']"
     submit_button_xpath = "//button[@type='submit']"
     clear_button_xpath = "//button[contains(@class, 'containedSecondary')]"
-    add_match_url = ('https://scouts-test.futbolkolektyw.pl/en')
+    add_match_url = ('https://scouts.futbolkolektyw.pl/en/')
     expected_title = "Adding match player Bora Lava"
 
     def title_of_page(self):
@@ -53,3 +54,6 @@ class AddAMatchForm(BasePage):
 
     def wait_for_button_will_be_clickable(self):
         self.wait_for_element_to_be_clickable(self.submit_button_xpath)
+
+    def wait_for_visibility_of_element(self):
+        self.wait_for_visibility_of_element_located(self.title_of_box_xpath)

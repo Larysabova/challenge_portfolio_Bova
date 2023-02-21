@@ -5,7 +5,7 @@ class Players(BasePage):
     filter_button_xpath = "//button[@title = 'Filter Table']"
     name_filter_field_xpath = "//div[2]/div[1]/div/div/div/input"
     surname_filter_field_xpath = "//div[2]/div[1]/div/div/input"
-    result_of_filtering_xpath = "//*[@id='MUIDataTableBodyRow-0']"
+    result_of_filtering_xpath = "//*[@data-testid='MUIDataTableBodyRow-0']"
     close_button_xpath = "//*[@aria-label = 'Close']"
 
     def click_on_the_filter_button(self):

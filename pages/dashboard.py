@@ -5,6 +5,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 
 class Dashboard(BasePage):
+    header_of_box = "//header/div/h6"
     menu_button_xpath = "//button[@aria-label='menu']"
     main_page_button_xpath = "//*[text()='Main page']"
     main_page_button_in_Polish_xpath = "//*[text()='Strona główna']"
@@ -19,11 +20,11 @@ class Dashboard(BasePage):
     last_updated_match_hyperlink_xpath = "//a[4]/button/span[1]"
     last_updated_report_hyperlink_xpath = "//a[5]/button/span[1]"
     expected_title = "Scouts panel"
-    dashboard_url = ('https://scouts-test.futbolkolektyw.pl/en')
+    dashboard_url = ('https://scouts.futbolkolektyw.pl/en/')
     wait = WebDriverWait(driver, 10)
 
     def title_of_page(self):
-        self.wait_for_element_to_be_clickable(self.add_player_button_xpath)
+        self.wait_for_element_to_be_clickable(self.header_of_box)
         assert self.get_page_title(self.dashboard_url) == self.expected_title
 
     def wait_for_button_will_be_clickable(self):

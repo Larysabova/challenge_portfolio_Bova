@@ -21,7 +21,7 @@ class TestChangeTheLanguage(unittest.TestCase):
         self.driver_service = Service(executable_path=DRIVER_PATH)
         # self.driver_service = Service(executable_path=ChromeDriverManager().install())
         self.driver = webdriver.Chrome(service=self.driver_service)
-        self.driver.get('https://scouts-test.futbolkolektyw.pl/en')
+        self.driver.get('https://scouts.futbolkolektyw.pl/en/')
         self.driver.fullscreen_window()
         self.driver.implicitly_wait(IMPLICITLY_WAIT)
 
@@ -36,6 +36,6 @@ class TestChangeTheLanguage(unittest.TestCase):
         dashboard_page.click_on_the_language_button()
         dashboard_page.wait_for_visibility_of_button_in_polish()
 
-        BasePage.take_a_screenshot(self, 'TC002.png')
+        BasePage.take_a_screenshot(self, 'TC003.png')
 
         BasePage.tearDown(self)

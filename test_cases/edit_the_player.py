@@ -23,7 +23,7 @@ class TestEditThePlayer(unittest.TestCase):
         self.driver_service = Service(executable_path=DRIVER_PATH)
         # self.driver_service = Service(executable_path=ChromeDriverManager().install())
         self.driver = webdriver.Chrome(service=self.driver_service)
-        self.driver.get('https://scouts-test.futbolkolektyw.pl/en')
+        self.driver.get('https://scouts.futbolkolektyw.pl/en/')
         self.driver.fullscreen_window()
         self.driver.implicitly_wait(IMPLICITLY_WAIT)
 
@@ -44,11 +44,12 @@ class TestEditThePlayer(unittest.TestCase):
         players_page.wait_for_button_will_be_clickable()
         players_page.click_on_the_result_of_filtering()
         edit_the_player_page = EditThePlayer(self.driver)
-        edit_the_player_page.type_in_level('Professional')
+        edit_the_player_page.title_of_page()
+        edit_the_player_page.type_in_level('Pro')
         edit_the_player_page.wait_for_button_will_be_clickable()
         edit_the_player_page.click_on_the_submit_button()
         edit_the_player_page.wait_for_visibility_of_element()
 
-        BasePage.take_a_screenshot(self, 'TC004.png')
+        BasePage.take_a_screenshot(self, 'TC005.png')
 
         BasePage.tearDown(self)

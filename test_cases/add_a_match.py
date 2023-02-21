@@ -24,7 +24,7 @@ class TestAddAMatch(unittest.TestCase):
         self.driver_service = Service(executable_path=DRIVER_PATH)
         # self.driver_service = Service(executable_path=ChromeDriverManager().install())
         self.driver = webdriver.Chrome(service=self.driver_service)
-        self.driver.get('https://scouts-test.futbolkolektyw.pl/en')
+        self.driver.get('https://scouts.futbolkolektyw.pl/en/')
         self.driver.fullscreen_window()
         self.driver.implicitly_wait(IMPLICITLY_WAIT)
 
@@ -51,6 +51,7 @@ class TestAddAMatch(unittest.TestCase):
         matches_page.wait_for_button_will_be_clickable()
         matches_page.click_on_the_add_match_button()
         add_a_match_form = AddAMatchForm(self.driver)
+        add_a_match_form.wait_for_visibility_of_element()
         add_a_match_form.type_in_my_team('Larifa')
         add_a_match_form.type_in_enemy_team('Timfa')
         add_a_match_form.type_in_my_team_score('3')
@@ -60,6 +61,6 @@ class TestAddAMatch(unittest.TestCase):
         add_a_match_form.click_on_the_submit_button()
         matches_page.wait_for_visibility_of_popup()
 
-        BasePage.take_a_screenshot(self, 'TC005.png')
+        BasePage.take_a_screenshot(self, 'TC006.png')
 
         BasePage.tearDown(self)
